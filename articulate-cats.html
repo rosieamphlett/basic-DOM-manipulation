@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <style>
+        .app {
+            background: #252525;
+            font-family: 'Roboto', sans-serif;
+            text-align: center;
+        }
+        
+        .header {
+            text-align: center;
+            color: #66CCCC;
+            font-size: 50px;
+            padding: 5%;
+            font-weight: 700;
+        }
+        
+        .allArticles {
+            width: 60%;
+            margin: auto;
+        }
+        
+        .card {
+            margin-bottom: 10%;
+            border-radius: 3%;
+            background: white;
+            box-shadow: 10px 10px 5px grey;
+        }
+        
+        .cardTitle {
+            font-size: 28px;
+            color: #66CCCC;
+            padding: 3%;
+        }
+        
+        img {
+            max-width: 50%;
+            padding: 2%
+        }
+        
+        .subtitle {
+            color: #66CCCC;
+            font-weight: 700;
+        }
+        
+        .info {
+            font-style: italic;
+            color: black;
+            font-weight: 400;
+            padding: 1%
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        @media only screen and (max-width: 700px) {
+            .subtitle {
+            font-size: 2vh;
+            }
+            .header {
+                font-size: 4vh;
+            }
+            .card-title {
+            font-size: 3vh;
+            }
+            .info {
+                font-size: 1vh
+            }
+        }
+    </style>
+</head>
+
+<body class="app">
+    <h1 class="header">Cat Encyclopedia</h1>
+    <article id="article" class="allArticles"></article>
+
+    <script>
+        const cats = [
+            {
+                breed:'Scottish fold',
+                description:'The Scottish Fold is a breed of domestic cat with a natural dominant-gene mutation that affects cartilage throughout the body, causing the ears to “fold, ” bending forward and down towards the front of the head, which gives the cat what is often described as an “owl-like” appearance',
+                pros:'Owl ears, perfectly round face, will fit inside any box',
+                cons:'None',
+                imgurl:'https://ichef.bbci.co.uk/news/624/cpsprodpb/5D01/production/_95790832_gettyimages-516700094.jpg'
+            }, 
+            {
+                breed:'Persian',
+                description:'The Persian cat is a long-haired breed of cat characterized by its round face and short muzzle. It is also known as the “Persian Longhair” in the English-speaking countries',
+                pros:'Makes you look like a criminal mastermind',
+                cons:'Will cover your trousers in hair',
+                imgurl:'http://britishlibrary.typepad.co.uk/.a/6a00d8341c464853ef01b7c7e529e2970b-pi'
+            }, 
+            {
+                breed:'Sphynx',
+                description:'The Sphynx cat is a breed of cat known for its lack of coat. It was developed through selective breeding, starting in the 1960s. The skin should have the texture of chamois, as it has fine hairs, or they may be completely hairless',
+                pros:'Feels like warm suede, if you like that sort of thing',
+                cons:'Not enough fluff, low cuddle rating',
+                imgurl:'http://www.freeportvet.com/sites/default/files/styles/large/adaptive-image/public/sphynx-cat-breed-info_0.jpg?itok=W_4tBMxD'
+            }, 
+            {
+                breed:'British shorthair',
+                description:'The British Shorthair is the pedigreed version of the traditional British domestic cat, with a distinctively chunky body, dense coat and broad face',
+                pros:'Endearing teddy bear face',
+                cons:'Intense and disquieting gaze',
+                imgurl:'https://dailystory.me/wp-content/uploads/2018/05/1-77.jpg'
+            },
+            {
+                breed:'Bengal',
+                description:'The Bengal is a domestic cat breed developed to look like exotic wild cats such as leopards, ocelots, margays and clouded leopards',
+                pros:'Exotic appearance',
+                cons:'Will not sit still for a second',
+                imgurl:'https://i.pinimg.com/originals/d5/c8/8a/d5c88afdd30e8aec38224cbbf8b392d7.jpg'
+            },
+            {
+                breed:'Labrador',
+                description:'The Labrador Retriever, or just Labrador, is a type of retriever-gun dog. The Labrador is one of the most popular breeds of dog in Canada, the United Kingdom and the United States',
+                pros:'A very good boy',
+                cons:'Not actually a cat',
+                imgurl:'https://static1.squarespace.com/static/573b62e9746fb941c1458dcd/t/58bf1f27d1758e5d0c580379/1488921550603/who-we-are.jpg'
+            },
+        ]
+    
+        let list = document.getElementById('article')
+
+        cats.forEach(cat => {
+            let newCat = document.createElement('article')
+            newCat.setAttribute("class", "card")
+
+            let cardTitle = document.createElement('header')
+            cardTitle.setAttribute("class", "cardTitle")
+            cardTitle.innerText = cat.breed
+            newCat.appendChild(cardTitle)
+
+            let pic = document.createElement('img')
+            pic.setAttribute("src", cat.imgurl)
+            newCat.appendChild(pic)
+
+            let about = document.createElement('p')
+            about.setAttribute("class", "subtitle")
+            about.innerText = 'ABOUT:'
+            newCat.appendChild(about)
+
+            let description = document.createElement('p')
+            description.setAttribute("class", "info")
+            description.innerText = cat.description
+            newCat.appendChild(description)
+
+            let prosTitle = document.createElement('p')
+            prosTitle.setAttribute("class", "subtitle")
+            prosTitle.innerText = 'PROS:'
+            newCat.appendChild(prosTitle)
+
+            let pros = document.createElement('p')
+            pros.setAttribute("class", "info")
+            pros.innerText = cat.pros
+            newCat.appendChild(pros)
+
+            let consTitle = document.createElement('p')
+            consTitle.setAttribute("class", "subtitle")
+            consTitle.innerText = 'CONS:'
+            newCat.appendChild(consTitle)
+
+            let cons = document.createElement('p')
+            cons.setAttribute("class", "info")
+            cons.innerText = cat.cons
+            newCat.appendChild(cons)
+            
+            list.appendChild(newCat)
+        })
+    </script> 
+</body>
+</html>
